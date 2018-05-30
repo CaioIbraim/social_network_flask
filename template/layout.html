@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<title>My Application</title>
+
+
+<div class="alert-message block-message error">
+  {% with errors = get_flashed_messages(category_filter=["error"]) %}
+    {% if errors %}
+        {%- for msg in errors %}
+            <div class="alert alert-warning">
+              <strong>Warning!</strong>{{ msg }}
+            </div>
+        {% endfor -%}
+    {% endif %}
+  {% endwith %}
+
+
+  {% with infos = get_flashed_messages(category_filter=["info"]) %}
+    {% if infos %}
+        {%- for msg in infos %}
+            <div class="alert alert-success">
+              <strong>Success!</strong>{{ msg }}
+            </div>
+        {% endfor -%}
+    {% endif %}
+  {% endwith %}
+
+</div>
+
+
+<div class="container-fluid">
+
+  {% block body %}{% endblock %}
+
+
+</div>
